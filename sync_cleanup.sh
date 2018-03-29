@@ -1,5 +1,5 @@
 #!/bin/bash
-   
+
 spinner()
 {
     local pid=$!
@@ -16,24 +16,15 @@ spinner()
     printf "    \b\b\b\b"
 }
 
-DB_DIR="/cygdrive/c/Users/../db"
-LOG_DIR="/cygdrive/c/Users/../log"
-JELLY_DIR="/cygdrive/c/Users/../test-.."
+APPDATA_DIR="/Users/navpot/AppData"
+JELLY_DIR="/Users/navpot/sync"
 
-if [ -d "$DB_DIR" ]; then
-  (rm -r $DB_DIR) &
+if [ -d "$APPDATA_DIR" ]; then
+  (rm -r $APPDATA_DIR) &
   spinner
-  echo "Removed DB Dir.."
+  echo "Removed AppData Dir.."
 else
-  echo "DB Dir doesn't exist.."
-fi
-
-if [ -d "$LOG_DIR" ]; then
-  (rm -r $LOG_DIR) &
-  spinner
-  echo "Removed LOG Dir.."
-else
-  echo "LOG Dir doesn't exist.."
+  echo "AppData Dir doesn't exist.."
 fi
 
 if [ -d "$JELLY_DIR" ]; then
@@ -45,5 +36,5 @@ else
 fi
 echo "Finished cleanup!"
 echo "Making new directory"
-(mkdir "test-odrive")
+(mkdir "sync")
 echo "Done!"
